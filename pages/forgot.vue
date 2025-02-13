@@ -10,9 +10,11 @@
         style="justify-self: center"
       />
       <br />
-      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Sign In</h2>
+      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">
+        Forgot password
+      </h2>
 
-      <form class="space-y-4" action="dashboard">
+      <form class="space-y-4" action="#">
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1"
             >Email</label
@@ -25,7 +27,7 @@
           />
         </div>
 
-        <div>
+        <div hidden>
           <label class="block text-sm font-medium text-gray-700 mb-1"
             >Password</label
           >
@@ -37,26 +39,20 @@
           />
         </div>
 
-        <div class="flex items-center justify-between">
-          <label class="flex items-center">
-            <input
-              type="checkbox"
-              class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-            />
-            <span class="ml-2 text-sm text-gray-600">Remember me</span>
-          </label>
-          <a href="forgot" class="text-sm text-indigo-600 hover:text-indigo-500"
-            >Forgot password?</a
-          >
-        </div>
-
         <button
           type="submit"
           class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors"
         >
-          Sign In
+          Submit
         </button>
       </form>
+
+      <div class="mt-6 text-center text-sm text-gray-600">
+        I remember my password
+        <a href="/" class="text-indigo-600 hover:text-indigo-500 font-medium"
+          >Sign in</a
+        >
+      </div>
     </div>
   </div>
 </template>
