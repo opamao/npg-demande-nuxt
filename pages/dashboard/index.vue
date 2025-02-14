@@ -21,6 +21,30 @@
         <div class="flex items-center justify-center h-48 mb-4 rounded-sm">
           Contenu
         </div>
+
+        <table id="example" class="display" style="width: 100%">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Office</th>
+              <th>Age</th>
+              <th>Start date</th>
+              <th>Salary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Tiger Nixon</td>
+              <td>System Architect</td>
+              <td>Edinburgh</td>
+              <td>61</td>
+              <td>2011-04-25</td>
+              <td>$320,800</td>
+            </tr>
+          </tbody>
+        </table>
+         
       </div>
 
       <Footer />
@@ -34,20 +58,21 @@ import Aside from "~/components/Aside.vue";
 import Footer from "~/components/Footer.vue";
 
 export default {
-  //   head() {
-  //     return {
-  //       script: [
-  //         {
-  //           src: "https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3",
-  //           type: "text/javascript",
-  //         },
-  //       ],
-  //     };
-  //   },
   components: {
     Nav,
     Aside,
     Footer,
+  },
+  mounted() {
+    if (typeof window.$ !== 'undefined') {
+      // Si jQuery est chargé
+      const $ = window.$; // Récupérer la référence à jQuery
+      $(document).ready(function() {
+        $('#example').DataTable();  // Initialisation de DataTable
+      });
+    } else {
+      console.error('jQuery n\'est pas chargé');
+    }
   },
 };
 </script>

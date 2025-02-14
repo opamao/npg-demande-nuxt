@@ -35,8 +35,8 @@
           <div class="flex items-center ms-3">
             <div>
               <!-- En cliquant on va dans setting du -->
-              <a
-                href="#"
+              <NuxtLink
+                to="/profile"
                 class="flex text-sm bg-blue-800 rounded-full focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-600"
               >
                 <img
@@ -53,7 +53,7 @@
                     neil.sims@flowbite.com
                   </p>
                 </div>
-              </a>
+              </NuxtLink>
             </div>
           </div>
         </div>
