@@ -22,28 +22,7 @@
           Contenu
         </div>
 
-        <table id="example" class="display" style="width: 100%">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Position</th>
-              <th>Office</th>
-              <th>Age</th>
-              <th>Start date</th>
-              <th>Salary</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Tiger Nixon</td>
-              <td>System Architect</td>
-              <td>Edinburgh</td>
-              <td>61</td>
-              <td>2011-04-25</td>
-              <td>$320,800</td>
-            </tr>
-          </tbody>
-        </table>
+        <UTable :rows="people" />
          
       </div>
 
@@ -51,6 +30,46 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const people = [{
+  id: 1,
+  name: 'Lindsay Walton',
+  title: 'Front-end Developer',
+  email: 'lindsay.walton@example.com',
+  role: 'Member'
+}, {
+  id: 2,
+  name: 'Courtney Henry',
+  title: 'Designer',
+  email: 'courtney.henry@example.com',
+  role: 'Admin'
+}, {
+  id: 3,
+  name: 'Tom Cook',
+  title: 'Director of Product',
+  email: 'tom.cook@example.com',
+  role: 'Member'
+}, {
+  id: 4,
+  name: 'Whitney Francis',
+  title: 'Copywriter',
+  email: 'whitney.francis@example.com',
+  role: 'Admin'
+}, {
+  id: 5,
+  name: 'Leonard Krasner',
+  title: 'Senior Designer',
+  email: 'leonard.krasner@example.com',
+  role: 'Owner'
+}, {
+  id: 6,
+  name: 'Floyd Miles',
+  title: 'Principal Designer',
+  email: 'floyd.miles@example.com',
+  role: 'Member'
+}]
+</script>
 
 <script>
 import Nav from "~/components/Nav.vue";
@@ -62,17 +81,6 @@ export default {
     Nav,
     Aside,
     Footer,
-  },
-  mounted() {
-    if (typeof window.$ !== 'undefined') {
-      // Si jQuery est chargé
-      const $ = window.$; // Récupérer la référence à jQuery
-      $(document).ready(function() {
-        $('#example').DataTable();  // Initialisation de DataTable
-      });
-    } else {
-      console.error('jQuery n\'est pas chargé');
-    }
   },
 };
 </script>

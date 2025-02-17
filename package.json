@@ -1,7 +1,20 @@
 {
   "name": "nuxt-app",
+  "version": "1.0.0",
   "private": true,
+  "description": "Look at [Nuxt docs](https://nuxt.com/docs/getting-started/introduction) and [Nuxt UI docs](https://ui.nuxt.com) to learn more.",
+  "homepage": "https://github.com/opamao/npg-demande-nuxt#readme",
+  "bugs": {
+    "url": "https://github.com/opamao/npg-demande-nuxt/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opamao/npg-demande-nuxt.git"
+  },
+  "license": "ISC",
+  "author": "",
   "type": "module",
+  "main": "postcss.config.js",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -10,11 +23,14 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/ui": "^2.21.0",
+    "@tailwindcss/postcss": "^4.0.6",
     "@tailwindcss/vite": "^4.0.6",
     "nuxt": "^3.15.4",
     "nuxt-app": "file:",
     "simple-datatables": "^10.0.0",
     "tailwindcss": "^4.0.6",
+    "tailwindcss-primeui": "^0.4.0",
     "vue": "latest",
     "vue-router": "latest"
   },
