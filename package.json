@@ -1,20 +1,7 @@
 {
-  "name": "nuxt-app",
-  "version": "1.0.0",
+  "name": "trezo-nuxt",
   "private": true,
-  "description": "Look at [Nuxt docs](https://nuxt.com/docs/getting-started/introduction) and [Nuxt UI docs](https://ui.nuxt.com) to learn more.",
-  "homepage": "https://github.com/opamao/npg-demande-nuxt#readme",
-  "bugs": {
-    "url": "https://github.com/opamao/npg-demande-nuxt/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/opamao/npg-demande-nuxt.git"
-  },
-  "license": "ISC",
-  "author": "",
   "type": "module",
-  "main": "postcss.config.js",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -23,18 +10,35 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/ui": "^2.21.0",
-    "@tailwindcss/postcss": "^4.0.6",
-    "@tailwindcss/vite": "^4.0.6",
-    "nuxt": "^3.15.4",
-    "nuxt-app": "file:",
-    "simple-datatables": "^10.0.0",
-    "tailwindcss": "^4.0.6",
-    "tailwindcss-primeui": "^0.4.0",
-    "vue": "latest",
-    "vue-router": "latest"
+    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/daygrid": "^6.1.15",
+    "@fullcalendar/interaction": "^6.1.15",
+    "@fullcalendar/timegrid": "^6.1.15",
+    "@fullcalendar/vue3": "^6.1.15",
+    "@mdi/font": "^7.4.47",
+    "@types/bootstrap": "^5.2.10",
+    "@vueup/vue-quill": "^1.2.0",
+    "apexcharts": "^3.54.1",
+    "date-fns": "^2.30.0",
+    "echarts": "^5.5.1",
+    "feather-icons": "^4.29.2",
+    "nuxt": "^3.13.0",
+    "nuxt-feather-icons": "^1.2.4",
+    "nuxt-swiper": "^1.2.2",
+    "prismjs": "^1.29.0",
+    "quill": "^2.0.2",
+    "trezo-nuxt": "file:",
+    "v-calendar": "^3.1.2",
+    "vue": "^3.5.10",
+    "vue-echarts": "^7.0.3",
+    "vue-router": "^4.4.5",
+    "vue3-apexcharts": "^1.7.0"
   },
   "devDependencies": {
-    "vite-svg-loader": "^5.1.0"
+    "@bootstrap-vue-next/nuxt": "^0.24.23",
+    "bootstrap": "^5.3.3",
+    "bootstrap-vue-next": "^0.24.23",
+    "sass": "^1.79.4",
+    "sass-loader": "^16.0.2"
   }
 }
