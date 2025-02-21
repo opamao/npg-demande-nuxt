@@ -30,7 +30,6 @@
           >
             <span class="material-symbols-outlined menu-icon">dashboard</span>
             <span class="title">Dashboard</span>
-            <span class="count">1</span>
           </a>
 
           <ul class="menu-sub" v-show="isOpen('dashboard')">
@@ -53,101 +52,21 @@
             <span class="material-symbols-outlined menu-icon">
               shopping_cart
             </span>
-            <span class="title">eCommerce</span>
+            <span class="title">Demandes</span>
+            <span class="count">10</span>
           </a>
 
           <ul class="menu-sub" v-show="isOpen('eCommerce')">
             <li class="menu-item">
-              <NuxtLink to="/ecommerce/products-grid" class="menu-link">
-                Products Grid
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/ecommerce/products-list" class="menu-link">
-                Products List
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/ecommerce/product-details" class="menu-link">
-                Product Details
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/ecommerce/create-product" class="menu-link">
-                Create Product
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/ecommerce/edit-product" class="menu-link">
-                Edit Product
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/ecommerce/cart" class="menu-link"> Cart </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/ecommerce/checkout" class="menu-link">
-                Checkout
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/ecommerce/orders" class="menu-link">
-                Orders
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/ecommerce/order-details" class="menu-link">
-                Order Details
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/ecommerce/create-order" class="menu-link">
-                Create Order
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/ecommerce/order-tracking" class="menu-link">
-                Order Tracking
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/ecommerce/customers" class="menu-link">
-                Customers
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/ecommerce/customer-details" class="menu-link">
-                Customer Details
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/ecommerce/categories" class="menu-link">
-                Categories
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/ecommerce/sellers" class="menu-link">
-                Sellers
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
               <NuxtLink to="/ecommerce/seller-details" class="menu-link">
-                Seller Details
+                Mes demandes
+                <span class="count">3</span>
               </NuxtLink>
             </li>
             <li class="menu-item">
-              <NuxtLink to="/ecommerce/create-seller" class="menu-link">
-                Create Seller
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/ecommerce/reviews" class="menu-link">
-                Reviews
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/ecommerce/refunds" class="menu-link">
-                Refunds
+              <NuxtLink to="/ecommerce/demande-product" class="menu-link">
+                Demandes reçues
+                <span class="count">7</span>
               </NuxtLink>
             </li>
           </ul>

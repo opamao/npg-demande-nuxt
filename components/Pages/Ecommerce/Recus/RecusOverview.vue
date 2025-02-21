@@ -14,27 +14,8 @@
                   </i>
                 </div>
                 <div class="flex-grow-1 ms-2">
-                  <span>En attente de validation</span>
+                  <span>En attente</span>
                   <h3 class="fs-20 mt-1 mb-0">7051</h3>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xxl-3 col-xl-6 col-sm-6">
-          <div
-            class="card bg-danger-div bg-opacity-10 border-danger-div border-opacity-10 rounded-3 mb-4 stats-box style-three"
-          >
-            <div class="card-body p-4">
-              <div class="d-flex align-items-center mb-35">
-                <div class="flex-shrink-0">
-                  <i class="material-symbols-outlined fs-40 text-danger-div">
-                    settings_timelapse
-                  </i>
-                </div>
-                <div class="flex-grow-1 ms-2">
-                  <span>En traitement</span>
-                  <h3 class="fs-20 mt-1 mb-0">$23.91k</h3>
                 </div>
               </div>
             </div>
@@ -71,7 +52,7 @@
                   </i>
                 </div>
                 <div class="flex-grow-1 ms-2">
-                  <span>Réfusées</span>
+                  <span>Rejetées</span>
                   <h3 class="fs-20 mt-1 mb-0">12.21%</h3>
                 </div>
               </div>
@@ -87,6 +68,6 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "SellerOverview",
+  name: "RecusOverview",
 });
 </script>
