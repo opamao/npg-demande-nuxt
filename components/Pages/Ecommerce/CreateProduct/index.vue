@@ -97,7 +97,7 @@
             <div
               class="modal fade"
               id="exampleModal4"
-              data-bs-backdrop="static" 
+              data-bs-backdrop="static"
               data-bs-keyboard="false"
               tabindex="-1"
               aria-labelledby="exampleModalLabel"
@@ -121,7 +121,8 @@
                       <div class="col-lg-12 col-sm-12">
                         <div class="form-group mb-4">
                           <input
-                            type="text" required
+                            type="text"
+                            required
                             class="form-control h-55"
                             placeholder="Utilisateur"
                           />
@@ -130,7 +131,8 @@
                       <div class="col-lg-12 col-sm-12">
                         <div class="form-group mb-4">
                           <input
-                            type="password" required
+                            type="password"
+                            required
                             class="form-control h-55"
                             placeholder="Mot de passe"
                           />
@@ -148,6 +150,97 @@
                       <button type="submit" class="btn btn-primary text-white">
                         Se connecter
                       </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="btn btn btn-primary py-2 px-4 text-white fw-semibold"
+              data-bs-toggle="modal"
+              data-bs-target="#recherche"
+            >
+              Après recherche
+            </button>
+
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="recherche"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered" style="max-width: 1000px;">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                      Recherche
+                    </h1>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <form action="#">
+                    <div class="modal-body">
+                      <table class="table align-middle">
+                        <thead>
+                          <tr>
+                            <th scope="col">Code article</th>
+                            <th scope="col">Désignation</th>
+                            <th scope="col">Type d'article</th>
+                            <th scope="col">Qté SAP</th>
+                            <th scope="col">Qté demandée</th>
+                            <th scope="col">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-secondary">
+                             code article
+                            </td>
+                            <td class="text-secondary">designation</td>
+                            <td class="text-secondary">
+                             type article
+                            </td>
+                            <td>
+                              quantité
+                            </td>
+                            <td>
+                              <input type="number" class="form-control">
+                            </td>
+                            <td>
+                              <div class="d-flex align-items-center gap-1">
+                                <button
+                                  class="ps-0 border-0 bg-transparent lh-1 position-relative top-2"
+                                >
+                                  <i
+                                    class="material-symbols-outlined fs-16 text-primary"
+                                  >
+                                   check
+                                  </i>
+                                </button>
+                                <button
+                                  class="ps-0 border-0 bg-transparent lh-1 position-relative top-2"
+                                >
+                                  <i
+                                    class="material-symbols-outlined fs-16 text-danger"
+                                  >
+                                   delete
+                                  </i>
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </form>
                 </div>

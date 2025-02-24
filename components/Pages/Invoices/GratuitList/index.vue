@@ -6,12 +6,12 @@
       >
         <h3 class="mb-0">Liste des demandes</h3>
         <NuxtLink
-          to="/users/add-user"
+          to="/invoices/create-gratuit"
           class="btn btn-outline-primary py-1 px-2 px-sm-4 fs-14 fw-medium rounded-3 hover-bg"
         >
           <span class="py-sm-1 d-block">
             <i class="ri-add-line d-none d-sm-inline-block me-1"></i>
-            <span>Nouveau utilisateur</span>
+            <span>Nouvelle demande</span>
           </span>
         </NuxtLink>
       </div>
@@ -101,7 +101,7 @@
                 <td>
                   <div class="d-flex align-items-center gap-1">
                     <NuxtLink title="Détails"
-                      to="/users/add-user"
+                      to="/invoices/gratuit-details"
                       class="ps-0 border-0 bg-transparent lh-1 position-relative top-2"
                     >
                     <i class="material-symbols-outlined fs-16 text-primary">
@@ -109,7 +109,7 @@
                       </i>
                     </NuxtLink>
                     <NuxtLink title="Modifier"
-                      to="/users/add-user"
+                      to="/invoices/edit-gratuit"
                       class="ps-0 border-0 bg-transparent lh-1 position-relative top-2"
                     >
                     <i class="material-symbols-outlined fs-16 text-body">

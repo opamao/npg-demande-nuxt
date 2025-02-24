@@ -42,10 +42,10 @@
         <li>
           <NuxtLink
             class="dropdown-item d-flex align-items-center text-body"
-            to="/my-profile"
+            to="/settings/account-settings"
           >
             <i class="material-symbols-outlined">account_circle</i>
-            <span class="ms-2">My Profile</span>
+            <span class="ms-2">Mes paramètres</span>
           </NuxtLink>
         </li>
       </ul>
@@ -57,7 +57,7 @@
             to="/authentication/lock-screen"
           >
             <i class="material-symbols-outlined">lock</i>
-            <span class="ms-2">Lock Screen</span>
+            <span class="ms-2">Verrouiller session</span>
           </NuxtLink>
         </li>
 
@@ -67,7 +67,7 @@
             to="/authentication/login"
           >
             <i class="material-symbols-outlined">logout</i>
-            <span class="ms-2">Logout</span>
+            <span class="ms-2">Se déconnecter</span>
           </NuxtLink>
         </li>
       </ul>

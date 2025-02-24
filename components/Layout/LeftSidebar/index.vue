@@ -52,7 +52,7 @@
             <span class="material-symbols-outlined menu-icon">
               shopping_cart
             </span>
-            <span class="title">Demandes</span>
+            <span class="title">Transfert stocks</span>
             <span class="count">10</span>
           </a>
 
@@ -81,28 +81,18 @@
             <span class="material-symbols-outlined menu-icon">
               content_paste
             </span>
-            <span class="title">Invoice</span>
+            <span class="title">Demandes</span>
           </a>
 
           <ul class="menu-sub" v-show="isOpen('invoice')">
             <li class="menu-item">
               <NuxtLink to="/invoices/invoice-list" class="menu-link">
-                Invoice List
+                Gadgets
               </NuxtLink>
             </li>
             <li class="menu-item">
-              <NuxtLink to="/invoices/invoice-details" class="menu-link">
-                Invoice Details
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/invoices/create-invoice" class="menu-link">
-                Create Invoice
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/invoices/edit-invoice" class="menu-link">
-                Edit Invoice
+              <NuxtLink to="/invoices/gratuit-list" class="menu-link">
+                Gratuits
               </NuxtLink>
             </li>
           </ul>
@@ -120,47 +110,8 @@
 
           <ul class="menu-sub" v-show="isOpen('users')">
             <li class="menu-item">
-              <NuxtLink to="/users/team-members" class="menu-link">
-                Team Members
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
               <NuxtLink to="/users/users-list" class="menu-link">
                 Users List
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/users/add-user" class="menu-link">
-                Add User
-              </NuxtLink>
-            </li>
-          </ul>
-        </li>
-
-        <li class="menu-item" :class="{ open: isOpen('profile') }">
-          <a
-            href="javascript:void(0);"
-            class="menu-link menu-toggle active"
-            @click="toggleMenu('profile')"
-          >
-            <span class="material-symbols-outlined menu-icon">
-              account_circle
-            </span>
-            <span class="title">Profile</span>
-          </a>
-
-          <ul class="menu-sub" v-show="isOpen('profile')">
-            <li class="menu-item">
-              <NuxtLink to="/profile/user-profile" class="menu-link">
-                User Profile
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/profile/teams" class="menu-link"> Teams </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/profile/my-projects" class="menu-link">
-                Projects
               </NuxtLink>
             </li>
           </ul>
@@ -170,101 +121,17 @@
           <span class="menu-title-text">MODULES</span>
         </li>
 
-        <li class="menu-item" :class="{ open: isOpen('tables') }">
-          <a
-            href="javascript:void(0);"
-            class="menu-link menu-toggle active"
-            @click="toggleMenu('tables')"
-          >
-            <span class="material-symbols-outlined menu-icon">table</span>
-            <span class="title">Tables</span>
-          </a>
-
-          <ul class="menu-sub" v-show="isOpen('tables')">
-            <li class="menu-item">
-              <NuxtLink to="/tables/data-tables" class="menu-link">
-                Data Table
-              </NuxtLink>
-            </li>
-          </ul>
-        </li>
-
-        <li class="menu-item">
-          <NuxtLink to="/apex-charts" class="menu-link">
-            <span class="material-symbols-outlined menu-icon">donut_large</span>
-            <span class="title">Apex Charts</span>
-          </NuxtLink>
-        </li>
-
-        <li class="menu-item" :class="{ open: isOpen('authentication') }">
-          <a
-            href="javascript:void(0);"
-            class="menu-link menu-toggle active"
-            @click="toggleMenu('authentication')"
-          >
-            <span class="material-symbols-outlined menu-icon">lock</span>
-            <span class="title">Authentication</span>
-          </a>
-
-          <ul class="menu-sub" v-show="isOpen('authentication')">
-            <li class="menu-item">
-              <NuxtLink to="/authentication/login" class="menu-link">
-                Login
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/authentication/register" class="menu-link">
-                Register
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/authentication/reset-password" class="menu-link">
-                Reset Password
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/authentication/forget-password" class="menu-link">
-                Forget Password
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/authentication/lock-screen" class="menu-link">
-                Lock Screen
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/authentication/logout" class="menu-link">
-                Log Out
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/authentication/confirm-mail" class="menu-link">
-                Confirm Mail
-              </NuxtLink>
-            </li>
-          </ul>
-        </li>
-
         <li class="menu-item">
           <NuxtLink to="/notification" class="menu-link">
             <span class="material-symbols-outlined menu-icon">
               notifications
             </span>
-            <span class="title">Notification</span>
+            <span class="title">Piste d'audit</span>
           </NuxtLink>
         </li>
 
         <li class="menu-title small text-uppercase">
           <span class="menu-title-text">OTHERS</span>
-        </li>
-
-        <li class="menu-item">
-          <NuxtLink to="/my-profile" class="menu-link">
-            <span class="material-symbols-outlined menu-icon">
-              account_circle
-            </span>
-            <span class="title">My Profile</span>
-          </NuxtLink>
         </li>
 
         <li class="menu-item" :class="{ open: isOpen('settings') }">
@@ -286,21 +153,6 @@
             <li class="menu-item">
               <NuxtLink to="/settings/change-password" class="menu-link">
                 Change Password
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/settings/connections" class="menu-link">
-                Connections
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/settings/privacy-policy" class="menu-link">
-                Privacy Policy
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/settings/terms-conditions" class="menu-link">
-                Terms & Conditions
               </NuxtLink>
             </li>
           </ul>

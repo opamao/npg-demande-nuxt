@@ -15,31 +15,9 @@
       </div>
     </div>
 
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <DashboardCRMBalanceOverviewChart />
-      </div>
-      <div class="col-lg-4">
-        <DashboardCRMLeadsBySourceChart />
-      </div>
-    </div>
-
-    <div class="row justify-content-center">
-      <div class="col-xxl-4 col-xl-5 col-lg-5">
-        <DashboardCRMTopPerformers />
-      </div>
-      <div class="col-xxl-8 col-xl-7 col-lg-7">
+    <div class="justify-content-center">
+      <div class="col-xxl-12 col-xl-7 col-lg-7">
         <DashboardCRMRecentLeads />
-      </div>
-    </div>
-
-    <div class="row justify-content-center">
-      <div class="col-xxl-8 col-xl-7 col-lg-6">
-        <DashboardCRMSalesReportChart />
-      </div>
-
-      <div class="col-xxl-4 col-xl-5 col-lg-6">
-        <DashboardCRMTopProductsBySales />
       </div>
     </div>
   </div>

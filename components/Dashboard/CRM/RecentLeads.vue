@@ -4,16 +4,7 @@
       <div
         class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-4"
       >
-        <h3 class="mb-0">Recent Leads</h3>
-        <select
-          class="form-select month-select form-control p-0 h-auto border-0 w-90"
-          style="background-position: right 0 center"
-          aria-label="Default select example"
-        >
-          <option selected>This Week</option>
-          <option value="1">This Month</option>
-          <option value="2">This Year</option>
-        </select>
+        <h3 class="mb-0">Recentes demandes de transferts</h3>
       </div>
 
       <div class="default-table-area style-two recent-leads">
@@ -21,84 +12,20 @@
           <table class="table align-middle">
             <thead>
               <tr>
-                <th scope="col">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="flexCheckDefault"
-                    />
-                  </div>
-                </th>
                 <th scope="col">Customer</th>
-                <th scope="col">Email</th>
-                <th scope="col">Source</th>
-                <th scope="col">Status</th>
-                <th scope="col">Action</th>
+                <th scope="col">Demande</th>
+                <th scope="col">Reçus</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="item in paginatedItems" :key="item.id">
                 <td>
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="flexCheckDefault2"
-                    />
-                  </div>
-                </td>
-                <td>
-                  <NuxtLink to="/my-profile" class="d-flex align-items-center">
-                    <img
-                      :src="item.customer.image"
-                      class="wh-44 rounded-circle"
-                      alt="user"
-                    />
-                    <div class="ms-2">
-                      <h6 class="fw-medium fs-14">
-                        {{ item.customer.name }}
-                      </h6>
-                    </div>
-                  </NuxtLink>
+                  <h6 class="fw-medium fs-14">
+                    {{ item.customer.name }}
+                  </h6>
                 </td>
                 <td>{{ item.email }}</td>
                 <td>{{ item.source }}</td>
-                <td>
-                  <span
-                    class="badge bg-opacity-10 p-2 fs-12 fw-normal"
-                    :class="computeClass(item.status)"
-                  >
-                    {{ item.status }}
-                  </span>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center gap-1">
-                    <button
-                      class="ps-0 border-0 bg-transparent lh-1 position-relative top-2"
-                    >
-                      <i class="material-symbols-outlined fs-16 text-primary">
-                        {{ item.action.view }}
-                      </i>
-                    </button>
-                    <button
-                      class="ps-0 border-0 bg-transparent lh-1 position-relative top-2"
-                    >
-                      <i class="material-symbols-outlined fs-16 text-body">
-                        {{ item.action.edit }}
-                      </i>
-                    </button>
-                    <button
-                      class="ps-0 border-0 bg-transparent lh-1 position-relative top-2"
-                    >
-                      <i class="material-symbols-outlined fs-16 text-danger">
-                        {{ item.action.delete }}
-                      </i>
-                    </button>
-                  </div>
-                </td>
               </tr>
             </tbody>
           </table>
@@ -148,12 +75,6 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 
-import image1 from "~/assets/images/user-11.jpg";
-import image2 from "~/assets/images/user-12.jpg";
-import image3 from "~/assets/images/user-13.jpg";
-import image4 from "~/assets/images/user-14.jpg";
-import image5 from "~/assets/images/user-15.jpg";
-
 export default defineComponent({
   name: "RecentLeads",
   setup() {
@@ -161,197 +82,10 @@ export default defineComponent({
       {
         id: "1",
         customer: {
-          image: image1,
           name: "David Brown",
         },
         email: "david@trezo.com",
         source: "Organic",
-        status: "Confirmed",
-        action: {
-          view: "visibility",
-          edit: "edit",
-          delete: "delete",
-        },
-      },
-      {
-        id: "2",
-        customer: {
-          image: image2,
-          name: "Sarah Miller",
-        },
-        email: "sara@trezo.com",
-        source: "Social",
-        status: "Pending",
-        action: {
-          view: "visibility",
-          edit: "edit",
-          delete: "delete",
-        },
-      },
-      {
-        id: "3",
-        customer: {
-          image: image3,
-          name: "Amanda Clark",
-        },
-        email: "amanda@trezo.com",
-        source: "Paid",
-        status: "In Progress",
-        action: {
-          view: "visibility",
-          edit: "edit",
-          delete: "delete",
-        },
-      },
-      {
-        id: "4",
-        customer: {
-          image: image4,
-          name: "Jennifer Taylor",
-        },
-        email: "taylor@trezo.com",
-        source: "Others",
-        status: "Confirmed",
-        action: {
-          view: "visibility",
-          edit: "edit",
-          delete: "delete",
-        },
-      },
-      {
-        id: "5",
-        customer: {
-          image: image5,
-          name: "Sarah Miller",
-        },
-        email: "sara@trezo.com",
-        source: "Social",
-        status: "Rejected",
-        action: {
-          view: "visibility",
-          edit: "edit",
-          delete: "delete",
-        },
-      },
-      {
-        id: "6",
-        customer: {
-          image: image4,
-          name: "David Brown",
-        },
-        email: "david@trezo.com",
-        source: "Organic",
-        status: "Confirmed",
-        action: {
-          view: "visibility",
-          edit: "edit",
-          delete: "delete",
-        },
-      },
-      {
-        id: "7",
-        customer: {
-          image: image3,
-          name: "Sarah Miller",
-        },
-        email: "sara@trezo.com",
-        source: "Social",
-        status: "Pending",
-        action: {
-          view: "visibility",
-          edit: "edit",
-          delete: "delete",
-        },
-      },
-      {
-        id: "8",
-        customer: {
-          image: image5,
-          name: "Amanda Clark",
-        },
-        email: "amanda@trezo.com",
-        source: "Paid",
-        status: "In Progress",
-        action: {
-          view: "visibility",
-          edit: "edit",
-          delete: "delete",
-        },
-      },
-      {
-        id: "9",
-        customer: {
-          image: image1,
-          name: "Jennifer Taylor",
-        },
-        email: "taylor@trezo.com",
-        source: "Others",
-        status: "Confirmed",
-        action: {
-          view: "visibility",
-          edit: "edit",
-          delete: "delete",
-        },
-      },
-      {
-        id: "10",
-        customer: {
-          image: image2,
-          name: "Sarah Miller",
-        },
-        email: "sara@trezo.com",
-        source: "Social",
-        status: "Rejected",
-        action: {
-          view: "visibility",
-          edit: "edit",
-          delete: "delete",
-        },
-      },
-      {
-        id: "11",
-        customer: {
-          image: image5,
-          name: "Sarah Miller",
-        },
-        email: "sara@trezo.com",
-        source: "Social",
-        status: "Rejected",
-        action: {
-          view: "visibility",
-          edit: "edit",
-          delete: "delete",
-        },
-      },
-      {
-        id: "12",
-        customer: {
-          image: image4,
-          name: "David Brown",
-        },
-        email: "david@trezo.com",
-        source: "Organic",
-        status: "Confirmed",
-        action: {
-          view: "visibility",
-          edit: "edit",
-          delete: "delete",
-        },
-      },
-      {
-        id: "13",
-        customer: {
-          image: image3,
-          name: "Sarah Miller",
-        },
-        email: "sara@trezo.com",
-        source: "Social",
-        status: "Pending",
-        action: {
-          view: "visibility",
-          edit: "edit",
-          delete: "delete",
-        },
       },
     ]);
 
@@ -370,7 +104,7 @@ export default defineComponent({
     };
 
     const currentPage = ref(1);
-    const itemsPerPage = ref(5); // Set how many items per page
+    const itemsPerPage = ref(5);
 
     const totalPages = computed(() =>
       Math.ceil(items.value.length / itemsPerPage.value)

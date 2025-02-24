@@ -1,6 +1,6 @@
 <template>
   <div class="main-content-container overflow-hidden">
-    <CommonPageTitle pageTitle="Invoices" subTitle="Invoices" />
+    <CommonPageTitle pageTitle="Demandes Gadgets" subTitle="Demandes" />
 
     <PagesInvoicesInvoicesList />
   </div>

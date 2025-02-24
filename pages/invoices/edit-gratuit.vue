@@ -1,8 +1,8 @@
 <template>
   <div class="main-content-container overflow-hidden">
-    <CommonPageTitle pageTitle="Utilisateurs" subTitle="Liste utilisateurs" />
+    <CommonPageTitle pageTitle="Edit Invoice" subTitle="Invoices" />
 
-    <PagesUsersUsersList />
+    <PagesInvoicesEditGratuit />
   </div>
 </template>
 
@@ -10,6 +10,6 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "UsersListPage",
+  name: "EditInvoicePage",
 });
 </script>

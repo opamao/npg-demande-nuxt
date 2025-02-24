@@ -1,6 +1,6 @@
 <template>
   <div class="main-content-container overflow-hidden">
-    <CommonPageTitle pageTitle="Change Password" subTitle="Settings" />
+    <CommonPageTitle pageTitle="Changer mot de passe" subTitle="Paramètres" />
 
     <OthersSettingsChangePassword />
   </div>

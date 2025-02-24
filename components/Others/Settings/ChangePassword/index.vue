@@ -7,7 +7,7 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="form-group mb-4">
-              <label class="label text-secondary">Old Password</label>
+              <label class="label text-secondary">Mot de passe actuel</label>
               <div class="form-group">
                 <div class="password-wrapper position-relative">
                   <input
@@ -27,7 +27,7 @@
           </div>
           <div class="col-lg-6">
             <div class="form-group mb-4">
-              <label class="label text-secondary">New Password</label>
+              <label class="label text-secondary">Nouveau mot de passe</label>
               <div class="form-group">
                 <div class="password-wrapper position-relative">
                   <input
@@ -47,7 +47,7 @@
           </div>
           <div class="col-lg-12">
             <div class="form-group mb-4">
-              <label class="label text-secondary">Confirm Password</label>
+              <label class="label text-secondary">Confirmer mot de passe</label>
               <div class="form-group">
                 <div class="password-wrapper position-relative">
                   <input
@@ -72,11 +72,8 @@
                 class="btn btn-primary py-2 px-4 fw-medium fs-16"
               >
                 <i class="ri-check-line text-white fw-medium"></i>
-                Change Password
+                Modifier le mot de passe
               </button>
-              <a href="#" class="text-danger fs-16 text-decoration-none">
-                Forgot Password?
-              </a>
             </div>
           </div>
         </div>
