@@ -37,8 +37,14 @@ export default defineNuxtConfig({
   ],
 
   plugins: ["~/plugins/apexcharts.client.ts", "~/plugins/vue-quill.js"],
-  modules: ["@bootstrap-vue-next/nuxt", "nuxt-swiper", "nuxt-feather-icons"],
-
+  modules: [
+    "@bootstrap-vue-next/nuxt",
+    "nuxt-swiper",
+    "nuxt-feather-icons",
+    //"@nuxtjs/proxy",
+    ["@nuxtjs/proxy", { pathRewrite: { '^/api' : '' } }]
+  ],
+  
   vue: {
     compilerOptions: {
       isCustomElement: (tag) => tag.toLowerCase() === "script",

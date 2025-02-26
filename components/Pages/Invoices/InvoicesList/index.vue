@@ -11,7 +11,7 @@
         >
           <span class="py-sm-1 d-block">
             <i class="ri-add-line d-none d-sm-inline-block me-1"></i>
-            <span>Faire une nouvelle demande</span>
+            <span>Nouvelle demande</span>
           </span>
         </NuxtLink>
       </div>
