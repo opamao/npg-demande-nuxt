@@ -10,7 +10,7 @@
     </button>
     <div class="dropdown-menu dropdown-lg p-0 border-0 dropdown-menu-end">
       <span class="fw-semibold fs-15 text-secondary title">
-        Choose Language
+        Choisir la langue
       </span>
       <div class="max-h-275">
         <div class="notification-menu">

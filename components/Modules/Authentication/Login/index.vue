@@ -43,7 +43,9 @@
                 placeholder="Votre mot de passe"
               />
             </div>
-            <p class="text-danger">{{ errorMessage }}</p>
+            <div v-if="errorMessage" class="alert alert-danger" role="alert">
+              {{ errorMessage }}
+            </div>
             <div class="form-group mb-4">
               <NuxtLink
                 to="/authentication/forget-password"
@@ -92,8 +94,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-import axios from "axios";
-
 export default defineComponent({
   name: "Login",
   data() {
@@ -119,29 +119,39 @@ export default defineComponent({
       try {
         console.log("Tentative de connexion");
 
-        // Envoi de la requête de connexion à l'API
-        const response = await axios.post(
-          "/api/users/login",
-          {
+        // Envoi de la requête de connexion à l'API avec fetch
+        const response = await fetch("http://localhost:5000/api/users/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
             login: this.emailOrUsername,
             password: this.password,
-          }
-        );
+          }),
+        });
 
-        console.log("Connexion réussie", response);
+        if (!response.ok) {
+          // Vérifier si la réponse est une erreur HTTP (status code 4xx ou 5xx)
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Erreur inconnue");
+        }
+
+        const data = await response.json();
+        console.log("Connexion réussie", data);
 
         // Si la réponse est positive, stocker le token
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("identifiant", response.data.user.id);
-        localStorage.setItem("nom", response.data.user.name);
-        localStorage.setItem("email", response.data.user.email);
-        localStorage.setItem("phone", response.data.user.phone);
-        localStorage.setItem("image", response.data.user.image);
-        localStorage.setItem("username", response.data.user.username);
-        localStorage.setItem("website", response.data.user.website);
-        localStorage.setItem("currency", response.data.user.currency);
-        localStorage.setItem("type", response.data.user.type);
-        localStorage.setItem("code", response.data.user.code);
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("identifiant", data.user.id);
+        localStorage.setItem("nom", data.user.name);
+        localStorage.setItem("email", data.user.email);
+        localStorage.setItem("phone", data.user.phone);
+        localStorage.setItem("image", data.user.image);
+        localStorage.setItem("username", data.user.username);
+        localStorage.setItem("website", data.user.website);
+        localStorage.setItem("currency", data.user.currency);
+        localStorage.setItem("type", data.user.type);
+        localStorage.setItem("code", data.user.code);
 
         // Redirection vers la page du dashboard après connexion réussie
         this.$router.push("/dashboard");
@@ -149,13 +159,7 @@ export default defineComponent({
         console.error("Erreur de connexion", error);
 
         // Gérer les erreurs de connexion
-        // Vérifier si l'erreur provient de l'API
-        if (axios.isAxiosError(error) && error.response) {
-          // Accéder au message d'erreur de l'API
-          this.errorMessage = error.response.data.message || "Erreur inconnue";
-        } else {
-          this.errorMessage = "Erreur de connexion réseau";
-        }
+        this.errorMessage = error.message || "Erreur de connexion réseau";
       } finally {
         this.loading = false;
       }

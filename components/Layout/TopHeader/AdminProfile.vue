@@ -16,7 +16,7 @@
         <div class="d-flex align-items-center justify-content-between">
           <div class="d-none d-xxl-block">
             <div class="d-flex align-content-center">
-              <h3>Yapi</h3>
+              <h3 v-if="nom">{{ nom }}</h3>
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@
           />
         </div>
         <div class="flex-grow-1 ms-2">
-          <h3 class="fw-medium">William John</h3>
+          <h3 class="fw-medium" v-if="nom">{{ nom }}</h3>
           <span class="fs-12">Marketing Manager</span>
         </div>
       </div>
@@ -78,5 +78,15 @@
 <script>
 export default {
   name: "AdminProfile",
+  data() {
+    return {
+      nom: null,
+    };
+  },
+  mounted() {
+    if (process.client) {
+      this.nom = localStorage.getItem("nom");
+    }
+  },
 };
 </script>

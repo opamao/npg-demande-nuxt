@@ -42,7 +42,7 @@ export default defineNuxtConfig({
     "nuxt-swiper",
     "nuxt-feather-icons",
     //"@nuxtjs/proxy",
-    ["@nuxtjs/proxy", { pathRewrite: { '^/api' : '' } }]
+   // ["@nuxtjs/proxy", { pathRewrite: { '^/api' : '' } }]
   ],
   
   vue: {

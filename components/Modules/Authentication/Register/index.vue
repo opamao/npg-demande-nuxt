@@ -22,74 +22,87 @@
               alt="login"
             />
           </div>
-          <h3 class="fs-28 mb-2">Register to Dashboard</h3>
+          <h3 class="fs-28 mb-2">S'inscrire au tableau de bord</h3>
           <p class="fw-medium fs-16 mb-4">
-            Register with social account or enter your details
+            Inscrivez-vous en entrant vos coordonnées
           </p>
-          <form>
+          <form @submit.prevent="handleRegister">
             <div class="form-group mb-3">
-              <label class="label text-secondary">Full Name</label>
+              <label class="label text-secondary">Nom et prénom</label>
               <input
+                v-model="nomEtPrenom"
+                required
                 type="text"
                 class="form-control"
-                placeholder="Enter your full name"
+                placeholder="Entrez votre nom complet"
               />
             </div>
             <div class="form-group mb-3">
-              <label class="label text-secondary">Email Address</label>
+              <label class="label text-secondary">Nom utilisateur</label>
               <input
+                v-model="username"
+                type="text"
+                class="form-control"
+                placeholder="Votre nom utilisateur"
+              />
+            </div>
+            <div class="form-group mb-3">
+              <label class="label text-secondary">Téléphone</label>
+              <input
+                v-model="phone"
+                type="tel"
+                class="form-control"
+                placeholder="0101010101"
+              />
+            </div>
+            <div class="form-group mb-3">
+              <label class="label text-secondary">Adresse email</label>
+              <input
+                v-model="email"
                 type="email"
                 class="form-control"
-                placeholder="example@trezo.com"
+                placeholder="example@yapi.com"
               />
             </div>
             <div class="form-group mb-3">
-              <label class="label text-secondary">Password</label>
+              <label class="label text-secondary">Mot de passe</label>
               <input
+                v-model="password"
                 type="password"
                 class="form-control"
-                placeholder="Type password"
+                placeholder="Saisir votre mot de passe"
               />
             </div>
+            <div v-if="errorMessage" class="alert alert-danger" role="alert">
+              {{ errorMessage }}
+            </div>
             <div class="form-group mb-3">
-              <NuxtLink
-                to="/social/profile"
+              <button
+                type="submit"
                 class="btn btn-primary fw-medium py-2 px-3 w-100"
+                :disabled="loading"
               >
                 <div
                   class="d-flex align-items-center justify-content-center py-1"
                 >
-                  <i class="material-symbols-outlined text-white fs-20 me-2">
-                    person_4
+                  <i
+                    v-if="loading"
+                    class="material-symbols-outlined text-white fs-20 me-2 spin-loader"
+                  >
+                    hourglass_empty
                   </i>
-                  <span>Register</span>
+                  <span v-if="!loading">S'enregistrer</span>
                 </div>
-              </NuxtLink>
+              </button>
             </div>
             <div class="form-group">
               <p>
-                By confirming your email, you agree to our
+                Avez-vous déjà un compte.
                 <NuxtLink
-                  to="/settings/terms-conditions"
-                  class="fw-medium text-decoration-none"
-                >
-                  Terms of Service
-                </NuxtLink>
-                and that you have read and understood our
-                <NuxtLink
-                  to="/settings/privacy-policy"
-                  class="fw-medium text-decoration-none"
-                >
-                  Privacy Policy </NuxtLink
-                >.
-              </p>
-              <p>
-                Already have an account.
-                <NuxtLink
-                  to="/authentication/login"
+                  to="/"
                   class="fw-medium text-primary text-decoration-none"
                 >
-                  Log In
+                  Se connecter
                 </NuxtLink>
               </p>
             </div>
@@ -105,5 +118,89 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Register",
+  data() {
+    return {
+      nomEtPrenom: "",
+      username: "",
+      phone: "",
+      email: "",
+      password: "",
+      errorMessage: "",
+      loading: false,
+    };
+  },
+  methods: {
+    async handleRegister() {
+      console.log("Formulaire soumis");
+
+      // Vérifier que certains champs ne sont pas vides avant de soumettre
+      if (!this.nomEtPrenom || !this.password) {
+        this.errorMessage =
+          "Veuillez saisir votre nom complet et mot de passe suvis de email et ou nom utilisateur.";
+        return;
+      }
+
+      this.loading = true;
+
+      try {
+        console.log("Tentative de création");
+
+        const response = await fetch("http://localhost:5000/api/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: this.nomEtPrenom,
+            email: this.email,
+            phone: this.phone,
+            image: "",
+            username: this.username,
+            website: "",
+            currency: "",
+            type: "user",
+            status: "Active",
+            code: "",
+            password: this.password,
+          }),
+        });
+
+        if (!response.ok) {
+          // Vérifier si la réponse est une erreur HTTP (status code 4xx ou 5xx)
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Erreur inconnue");
+        }
+
+        const data = await response.json();
+        console.log("Connexion réussie", data);
+
+        this.$router.push("/");
+      } catch (error) {
+        console.error("Erreur de connexion", error);
+
+        // Gérer les erreurs de connexion
+        this.errorMessage = error.message || "Erreur de connexion réseau";
+      } finally {
+        this.loading = false;
+      }
+    },
+  },
 });
 </script>
+
+<style scoped>
+/* Styles pour le loader circulaire */
+.spin-loader {
+  animation: spin 1s infinite linear;
+  font-size: 24px; /* Taille du loader */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>

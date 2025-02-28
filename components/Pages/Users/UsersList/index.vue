@@ -64,21 +64,21 @@
                 <th scope="col">Email</th>
                 <th scope="col">Location</th>
                 <th scope="col">Phone</th>
-                <th scope="col">Projects</th>
-                <th scope="col">Join Date</th>
+                <th scope="col">Statut</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in paginatedItems" :key="item.userID">
+              <p>{{ paginatedItems }}</p>
+              <tr v-for="item in paginatedItems" :key="item.id">
                 <td class="text-body">
-                  {{ item.userID }}
+                  {{ item.id }}
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
                     <div class="ms-2 ps-1">
                       <h6 class="fw-medium fs-14 mb-0">
-                        {{ item.user.name }}
+                        {{ item.name }}
                       </h6>
                     </div>
                   </div>
@@ -87,40 +87,40 @@
                   {{ item.email }}
                 </td>
                 <td class="text-secondary">
-                  {{ item.location }}
+                  {{ item.username }}
                 </td>
                 <td class="text-secondary">
                   {{ item.phone }}
                 </td>
                 <td class="text-secondary">
-                  {{ item.projects }}
-                </td>
-                <td class="text-secondary">
-                  {{ item.joinDate }}
+                  {{ item.status }}
                 </td>
                 <td>
                   <div class="d-flex align-items-center gap-1">
-                    <NuxtLink title="Détails"
+                    <NuxtLink
+                      title="Détails"
                       to="/users/add-user"
                       class="ps-0 border-0 bg-transparent lh-1 position-relative top-2"
                     >
-                    <i class="material-symbols-outlined fs-16 text-primary">
-                        {{ item.action.view }}
+                      <i class="material-symbols-outlined fs-16 text-primary">
+                        view
                       </i>
                     </NuxtLink>
-                    <NuxtLink title="Modifier"
+                    <NuxtLink
+                      title="Modifier"
                       to="/users/add-user"
                       class="ps-0 border-0 bg-transparent lh-1 position-relative top-2"
                     >
-                    <i class="material-symbols-outlined fs-16 text-body">
-                        {{ item.action.edit }}
+                      <i class="material-symbols-outlined fs-16 text-body">
+                        edit
                       </i>
                     </NuxtLink>
-                    <button title="Supprimer"
+                    <button
+                      title="Supprimer"
                       class="ps-0 border-0 bg-transparent lh-1 position-relative top-2"
                     >
                       <i class="material-symbols-outlined fs-16 text-danger">
-                        {{ item.action.delete }}
+                        delete
                       </i>
                     </button>
                   </div>
@@ -180,93 +180,62 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent, ref, computed, onMounted } from "vue";
 
 export default defineComponent({
   name: "DataTable",
   setup() {
-    const items = ref([
-      {
-        userID: "#JAN-158",
-        user: {
-          name: "Marcia Baker",
-        },
-        email: "marcia@trezo.com",
-        location: "Washington D.C",
-        phone: "+1 555-445-4455",
-        projects: 6,
-        joinDate: "01 Dec 2024",
-        action: {
-          view: "visibility",
-          edit: "edit",
-          delete: "delete",
-        },
-      },
-      {
-        userID: "#JAN-325",
-        user: {
-          name: "Carolyn Barnes",
-        },
-        email: "barnes@trezo.com",
-        location: "Chicago",
-        phone: "+1 555-455-9966",
-        projects: 10,
-        joinDate: "02 Dec 2024",
-        action: {
-          view: "visibility",
-          edit: "edit",
-          delete: "delete",
-        },
-      },
-    ]);
-
+    const items = ref<any[]>([]); // Initialisation avec un tableau vide
     const searchTerm = ref("");
     const itemsPerPage = ref(10);
     const currentPage = ref(1);
 
+    // Fonction pour récupérer les données via l'API
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/users"); // Remplace par l'URL de ton API
+        if (!response.ok) {
+          throw new Error("Erreur lors de la récupération des données");
+        }
+        const data = await response.json(); // Transformation de la réponse en JSON
+
+        console.log("Données récupérées:", JSON.stringify(data, null, 2));
+        items.value = data; // Remplacer les données statiques par celles de l'API
+      } catch (error) {
+        console.error("Erreur lors de la récupération des données:", error);
+      }
+    };
+
+    // Appel de la fonction fetchData lors du montage du composant
+    onMounted(() => {
+      fetchData();
+    });
+
+    // Filtrage des éléments en fonction du terme de recherche
     const filteredItems = computed(() => {
       return items.value.filter(
-        (item: {
-          userID: any;
-          user: { name: any };
-          email: any;
-          location: any;
-          phone: any;
-          joinDate: any;
-        }) =>
-          [
-            item.userID,
-            item.user.name,
-            item.email,
-            item.location,
-            item.phone,
-            item.joinDate,
-          ].some((field) =>
-            field.toLowerCase().includes(searchTerm.value.toLowerCase())
+        (item: { id: any; name: string; email: string; phone: string; status: string; username: string }) =>
+          [item.id, item.name, item.email, item.phone, item.status, item.username].some(
+            (field) => field.toLowerCase().includes(searchTerm.value.toLowerCase())
           )
       );
     });
 
-    const totalPages = computed(() =>
-      Math.ceil(filteredItems.value.length / Number(itemsPerPage.value))
-    );
+    // Total des pages
+    const totalPages = computed(() => Math.ceil(filteredItems.value.length / Number(itemsPerPage.value)));
 
+    // Pagination des éléments filtrés
     const paginatedItems = computed(() => {
       const start = (currentPage.value - 1) * Number(itemsPerPage.value);
       const end = start + Number(itemsPerPage.value);
       return filteredItems.value.slice(start, end);
     });
 
-    const startIndex = computed(
-      () => (currentPage.value - 1) * Number(itemsPerPage.value)
-    );
-    const endIndex = computed(() =>
-      Math.min(
-        startIndex.value + Number(itemsPerPage.value),
-        filteredItems.value.length
-      )
-    );
+    // Indices de début et de fin pour l'affichage des éléments paginés
+    const startIndex = computed(() => (currentPage.value - 1) * Number(itemsPerPage.value));
+    const endIndex = computed(() => Math.min(startIndex.value + Number(itemsPerPage.value), filteredItems.value.length));
 
+    // Fonctions pour changer de page
     const prevPage = () => {
       if (currentPage.value > 1) {
         currentPage.value--;
@@ -278,6 +247,10 @@ export default defineComponent({
         currentPage.value++;
       }
     };
+
+    // Ajouter un log pour vérifier si les données sont bien paginées
+    console.log("Total pages: ", totalPages.value);
+    console.log("Paginated items: ", paginatedItems.value);
 
     return {
       items,
@@ -295,3 +268,4 @@ export default defineComponent({
   },
 });
 </script>
+
